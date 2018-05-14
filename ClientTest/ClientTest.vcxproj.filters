@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="pbc">
+      <UniqueIdentifier>{828b7483-4995-46bb-b910-c74c31f5fdf3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bundle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBDebug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBECommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBEMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBEngine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBEngineAppInterfaceDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBEngineArgs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkInterfaceDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketReceiver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketSender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="endpoint.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="address.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KBEvent.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\alloc.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\array.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\bootstrap.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\context.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\descriptor.pbc.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\map.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\pattern.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\pbc.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\proto.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\stringpool.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc\varint.h">
+      <Filter>pbc</Filter>
+    </ClInclude>
+    <ClInclude Include="lua_pbc_manual.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="pbc-lua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Bundle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaces.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBECommon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBEMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBEngine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBEngineAppInterfaceDef.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBEngineArgs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageReader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketReceiver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketSender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="address.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="endpoint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KBEvent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\alloc.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\array.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\bootstrap.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\context.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\decode.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\map.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\pattern.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\proto.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\register.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\rmessage.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\stringpool.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\varint.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc\wmessage.c">
+      <Filter>pbc</Filter>
+    </ClCompile>
+    <ClCompile Include="lua_pbc_manual.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pbc-lua.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
