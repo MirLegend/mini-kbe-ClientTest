@@ -18,12 +18,6 @@ function GameApp.InitPb()
 
 end
 
---function GameApp.setIpPort(ip, port)
---	serverIp = ip;
---	serverPort = port
---	c.set_ip_port(ip, port)
---end
-
 function GameApp.connectServer(ip, port)
 	serverIp = ip;
 	serverPort = port
@@ -34,17 +28,6 @@ function GameApp.connectServer(ip, port)
 		return
 	end
 end
-
---function GameApp.Login(useraccount, passwd)
---
---	local ret, err = c.login(useraccount, passwd)
---	if not ret then
---	   print("connect error!!  can not connect to "..serverIp.." port:"..serverPort)
---	   return
---	end
-	--print("lua =============  onConnected")
-	--bConnected = true
---end
 
 local clientversion = 51
 

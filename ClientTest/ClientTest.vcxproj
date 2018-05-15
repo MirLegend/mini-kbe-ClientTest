@@ -99,7 +99,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Version.lib;netapi32.lib;ws2_32.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\ServerEngine\lua</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../libs/</AdditionalLibraryDirectories>
       <OutputFile>../bin/client/ClientTest.exe</OutputFile>
     </Link>
   </ItemDefinitionGroup>
