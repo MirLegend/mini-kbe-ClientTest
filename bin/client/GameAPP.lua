@@ -31,7 +31,7 @@ end
 
 local clientversion = 51
 
-function GameApp.Hello(useraccount, passwd)
+function GameApp.Hello()
 	
 	local stringbuffer = protobuf.encode("client_loginserver.Hello",      
         {         
@@ -41,6 +41,21 @@ function GameApp.Hello(useraccount, passwd)
 	local slen = string.len(stringbuffer)
     print("Hello slen ========= "..slen)
 	c.send(90, 1, stringbuffer)
+	
+end
+
+function GameApp.Login(loginName, password)
+	
+	local stringbuffer = protobuf.encode("client_loginserver.Login",      
+        {         
+            ctype = 1,      
+            account = loginName,
+			password = password,
+			extraData = "helloziyu"
+        })
+	local slen = string.len(stringbuffer)
+    print("Login slen ========= "..slen)
+	c.send(90, 5, stringbuffer)
 	
 end
 
@@ -70,10 +85,24 @@ end
 function onNetMessage(mainCmd, subCmd, buffer)
 	print("onNetMessage ============================================= cmd:"..mainCmd.." subCmd:"..subCmd)
 	
-	local result = protobuf.decode("client_loginserver.HelloCB", buffer)
-    print("HelloCB result: "..result.result)
-    print("HelloCB version: "..result.version)
-	print("HelloCB extraData: "..result.extraData)
+	if mainCmd == 90 then
+		if subCmd == 2 then
+			local result = protobuf.decode("client_loginserver.HelloCB", buffer)
+			print("HelloCB result: "..result.result)
+			print("HelloCB version: "..result.version)
+			print("HelloCB extraData: "..result.extraData)
+			GameApp.Login("ziyu", "5321")
+		elseif subCmd == 6 then
+			local result = protobuf.decode("client_loginserver.LoginFailed", buffer)
+			print("LoginFailed failedcode: "..result.failedcode)
+		elseif subCmd == 7 then
+			local result = protobuf.decode("client_loginserver.LoginSuccessfully", buffer)
+			print("LoginSuccessfully ip: "..result.baseip)
+			print("LoginSuccessfully port: "..result.baseport)
+		end
+	end
+	
+	
 end
 
 --return GameApp
