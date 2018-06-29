@@ -94,11 +94,11 @@ function onNetMessage(mainCmd, subCmd, buffer)
 			GameApp.Login("ziyu", "5321")
 		elseif subCmd == 6 then
 			local result = protobuf.decode("client_loginserver.LoginFailed", buffer)
-			print("LoginFailed failedcode: "..result.failedcode)
+			print("LoginFailed failedcode: "..result.failedcode.." datas:"..result.extraData)
 		elseif subCmd == 7 then
 			local result = protobuf.decode("client_loginserver.LoginSuccessfully", buffer)
-			print("LoginSuccessfully ip: "..result.baseip)
-			print("LoginSuccessfully port: "..result.baseport)
+			print("LoginSuccessfully ip: "..result.baseIp)
+			print("LoginSuccessfully port: "..result.basePort)
 		end
 	end
 	
