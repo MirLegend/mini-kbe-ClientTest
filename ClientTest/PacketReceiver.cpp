@@ -104,7 +104,7 @@ bool PacketReceiver::processRecv(bool expectingPacket)
 	{
 		return false;
 	}
-
+	printf("PacketReceiver::process len:%d \n", len);
 	pMessageReader_->process(pBuffer_->data(), 0, len);
 
 	return true;

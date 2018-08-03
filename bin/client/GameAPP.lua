@@ -6,6 +6,14 @@ GameApp = GameApp or {}
 local serverIp = "127.0.0.1"
 local serverPort = 20018
 
+local serverBaseIp = "127.0.0.1"
+local serverBasePort = 20018
+
+local accountName = ""
+local password = ""
+
+local curserver = 1 --login
+
 local bConnected = false --是否连接到服务器
 
 --注册pb文件
@@ -16,6 +24,18 @@ function GameApp.InitPb()
     local buffer = read_protobuf_file_c(pbFilePath)
     protobuf.register(buffer) --注:protobuf 是因为在protobuf.lua里面使用module(protobuf)来修改全局名字
 
+	local pbbaseFilePath = "./cb.pb"
+    print("InitPb file path: "..pbbaseFilePath)
+    
+    buffer = read_protobuf_file_c(pbbaseFilePath)
+    protobuf.register(buffer) --注:protobuf 是因为在protobuf.lua里面使用module(protobuf)来修改全局名字
+end
+
+function GameApp.loginServer(account, pwd)
+	accountName = account;
+	password = pwd
+	curserver = 1
+	GameApp.connectServer(serverIp, serverPort)
 end
 
 function GameApp.connectServer(ip, port)
@@ -44,6 +64,19 @@ function GameApp.Hello()
 	
 end
 
+function GameApp.HelloBase()
+	
+	local stringbuffer = protobuf.encode("client_baseserver.Hello",      
+        {         
+            version = clientversion,      
+            extraData = "helloziyu"     
+        })
+	local slen = string.len(stringbuffer)
+    print("Hello base slen ========= "..slen)
+	c.send(91, 1, stringbuffer)
+	
+end
+
 function GameApp.Login(loginName, password)
 	
 	local stringbuffer = protobuf.encode("client_loginserver.Login",      
@@ -59,14 +92,31 @@ function GameApp.Login(loginName, password)
 	
 end
 
+function GameApp.LoginBase(loginName, password)
+	
+	local stringbuffer = protobuf.encode("client_baseserver.Login",      
+        {            
+            account = loginName,
+			password = password
+        })
+	local slen = string.len(stringbuffer)
+    print("LoginBase slen ========= "..slen)
+	c.send(91, 3, stringbuffer)
+	
+end
+
 
 --有待优化 存入registry中
 function onConnected()
-	print("lua =============  onConnected")
+	print("lua =============  onConnected curser: "..curserver)
 	bConnected = true
 	
 	--连接后 第一步是hello下
-	GameApp.Hello()
+	if curserver == 1 then
+		GameApp.Hello()
+	elseif curserver == 2 then
+		GameApp.HelloBase()
+	end
 end
 
 --有待优化 存入registry中
@@ -85,13 +135,13 @@ end
 function onNetMessage(mainCmd, subCmd, buffer)
 	print("onNetMessage ============================================= cmd:"..mainCmd.." subCmd:"..subCmd)
 	
-	if mainCmd == 90 then
+	if mainCmd == 90 then --login cmd
 		if subCmd == 2 then
 			local result = protobuf.decode("client_loginserver.HelloCB", buffer)
 			print("HelloCB result: "..result.result)
 			print("HelloCB version: "..result.version)
 			print("HelloCB extraData: "..result.extraData)
-			GameApp.Login("ziyu", "5321")
+			GameApp.Login(accountName, password)
 		elseif subCmd == 6 then
 			local result = protobuf.decode("client_loginserver.LoginFailed", buffer)
 			print("LoginFailed failedcode: "..result.failedcode.." datas:"..result.extraData)
@@ -99,6 +149,19 @@ function onNetMessage(mainCmd, subCmd, buffer)
 			local result = protobuf.decode("client_loginserver.LoginSuccessfully", buffer)
 			print("LoginSuccessfully ip: "..result.baseIp)
 			print("LoginSuccessfully port: "..result.basePort)
+			serverBaseIp = result.baseIp
+			serverBasePort = result.basePort
+			--连接到base
+			curserver = 2
+			GameApp.connectServer(serverBaseIp, serverBasePort)
+		end
+	elseif mainCmd == 91 then --base cmd
+		if subCmd == 2 then
+			local result = protobuf.decode("client_baseserver.HelloCB", buffer)
+			print("HelloCB base result: "..result.result)
+			print("HelloCB base version: "..result.version)
+			print("HelloCB base extraData: "..result.extraData)
+			GameApp.LoginBase(accountName, password)
 		end
 	end
 	
