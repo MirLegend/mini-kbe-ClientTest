@@ -9,8 +9,8 @@ local serverPort = 20018
 local serverBaseIp = "127.0.0.1"
 local serverBasePort = 20018
 
-local accountName = ""
-local password = ""
+local g_accountName = ""
+local g_password = ""
 
 local curserver = 1 --login
 
@@ -32,8 +32,8 @@ function GameApp.InitPb()
 end
 
 function GameApp.loginServer(account, pwd)
-	accountName = account;
-	password = pwd
+	g_accountName = account;
+	g_password = pwd
 	curserver = 1
 	GameApp.connectServer(serverIp, serverPort)
 end
@@ -141,7 +141,7 @@ function onNetMessage(mainCmd, subCmd, buffer)
 			print("HelloCB result: "..result.result)
 			print("HelloCB version: "..result.version)
 			print("HelloCB extraData: "..result.extraData)
-			GameApp.Login(accountName, password)
+			GameApp.Login(g_accountName, g_password)
 		elseif subCmd == 6 then
 			local result = protobuf.decode("client_loginserver.LoginFailed", buffer)
 			print("LoginFailed failedcode: "..result.failedcode.." datas:"..result.extraData)
@@ -161,7 +161,10 @@ function onNetMessage(mainCmd, subCmd, buffer)
 			print("HelloCB base result: "..result.result)
 			print("HelloCB base version: "..result.version)
 			print("HelloCB base extraData: "..result.extraData)
-			GameApp.LoginBase(accountName, password)
+			GameApp.LoginBase(g_accountName, g_password)
+		elseif subCmd == 4 then  --登陆失败
+			local result = protobuf.decode("client_baseserver.LoginBaseappFailed", buffer)
+			print("LoginBaseappFailed failedcode: "..result.retCode)
 		end
 	end
 	
