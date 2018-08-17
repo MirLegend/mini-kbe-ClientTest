@@ -165,6 +165,9 @@ function onNetMessage(mainCmd, subCmd, buffer)
 		elseif subCmd == 4 then  --登陆失败
 			local result = protobuf.decode("client_baseserver.LoginBaseappFailed", buffer)
 			print("LoginBaseappFailed failedcode: "..result.retCode)
+		elseif subCmd == 5 then  --登陆成功 创建proxy
+			local result = protobuf.decode("client_baseserver.CreatedProxies", buffer)
+			print("CreatedProxies entityid: "..result.entityID)
 		end
 	end
 	
